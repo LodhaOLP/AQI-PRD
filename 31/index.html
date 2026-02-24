@@ -190,7 +190,14 @@
 
 }
                 // External Google API (Corrected to 'ind_cpcb')
-                        const API_URL = "https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=json&filters[city]=Mumbai";;
+                const gRes = await fetch(`https://airquality.googleapis.com/v1/currentConditions:lookup?key=${GOOGLE_KEY}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        location: { latitude: LAT, longitude: LON },
+                        extraComputations: ["LOCAL_AQI", "POLLUTANT_CONCENTRATION"]
+                    })
+                });
                 const gData = await gRes.json();
                 if (gData && gData.indexes) {
                     // UPDATED: Now looks for 'ind_cpcb'
