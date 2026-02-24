@@ -5,7 +5,7 @@
     <title>One Lodha Place | Air Quality Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="420"> 
-    //<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #9e801b;
@@ -138,9 +138,8 @@
     </div>
 
     <script>
-        //const K_KEY = 'nomjPNZHYkGzzP5YIJePqI2cUON67v1pj9JPXb8BpcgnC5VX';
-        //const GOOGLE_KEY = 'AIzaSyCoDosnEp6Hs4fz4eR4fTw9D9xsvhUAEx8'; 
-        const API_URL = "https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=json&filters[city]=Mumbai";
+        const K_KEY = 'nomjPNZHYkGzzP5YIJePqI2cUON67v1pj9JPXb8BpcgnC5VX';
+        const GOOGLE_KEY = 'AIzaSyCoDosnEp6Hs4fz4eR4fTw9D9xsvhUAEx8'; 
         const LAT = 19.0000, LON = 72.8200;
         const DEVICE_IDS = ['caf4632a-98dd-47f3-bfd7-6b54ba5a6886', 'c13d22a5-318b-459f-92b6-cb1a8182083a', '0fcb68a7-d014-4c64-afb5-911c3f697879', 'c1dd9ba1-d323-4c20-9eb0-88b5908c60d2', 'a74bbddc-8f27-43de-8672-90a80d0cd3a1', '8fc8d082-1a34-4950-b8d0-d0d68be4a6ef', '796ebfee-564a-4361-b7d1-90f86c9297ed', 'f05a413c-a488-427c-a12a-dc22851d9942'];                                                                           
 
@@ -191,14 +190,7 @@
 
 }
                 // External Google API (Corrected to 'ind_cpcb')
-                const gRes = await fetch(`https://airquality.googleapis.com/v1/currentConditions:lookup?key=${GOOGLE_KEY}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        location: { latitude: LAT, longitude: LON },
-                        extraComputations: ["LOCAL_AQI", "POLLUTANT_CONCENTRATION"]
-                    })
-                });
+                        const API_URL = "https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=json&filters[city]=Mumbai";;
                 const gData = await gRes.json();
                 if (gData && gData.indexes) {
                     // UPDATED: Now looks for 'ind_cpcb'
