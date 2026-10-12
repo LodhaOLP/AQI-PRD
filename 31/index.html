@@ -212,14 +212,7 @@
         const K_KEY = 'nomjPNZHYkGzzP5YIJePqI2cUON67v1pj9JPXb8BpcgnC5VX';
         const GOOGLE_KEY = 'AIzaSyCoDosnEp6Hs4fz4eR4fTw9D9xsvhUAEx8';
         const LAT = 19.0000, LON = 72.8200;
-        const DEVICE_IDS = [
-            'dfc123cb-bf24-4654-a51c-1f063abf95be',
-            '031a1e39-d42b-4e20-9861-2a28365f76a3',
-            '9fb4fe83-5340-47ed-af73-3641586d05b8',
-            '85ebf1cd-c9b6-4a3d-b8a7-b028564da156',
-            '98786370-3dde-4a3e-82f9-f8cf2910d217',
-            '46ce3613-b8b8-4ffa-a1bc-7e0ad3eb952a'
-        ];
+        const DEVICE_IDS = ['dfc123cb-bf24-4654-a51c-1f063abf95be', '031a1e39-d42b-4e20-9861-2a28365f76a3', '9fb4fe83-5340-47ed-af73-3641586d05b8', '85ebf1cd-c9b6-4a3d-b8a7-b028564da156', '98786370-3dde-4a3e-82f9-f8cf2910d217', '46ce3613-b8b8-4ffa-a1bc-7e0ad3eb952a'];
         const CACHE_KEY = 'olp_aqi_cache_v1';
         const STALE_MS = 2 * 60 * 60 * 1000;   // 2 hours — beyond this, don't show cached values
         const REFRESH_MS = 60 * 1000;          // 60 seconds — multiple chances within the 5-min display window
@@ -315,7 +308,7 @@
             const avg10 = pm10List.length
                 ? pm10List.reduce((a, b) => a + b, 0) / pm10List.length
                 : avg25;
-            return { aqi: calcAQI(avg25), pm25: avg25, pm10: avg10, devicesSeen: pm25List.length };
+            return { aqi: calcAQI(Math.min(...pm25List)), pm25: avg25, pm10: avg10, devicesSeen: pm25List.length };
         }
  
         async function fetchOutdoor() {
