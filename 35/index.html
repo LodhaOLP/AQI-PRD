@@ -308,7 +308,7 @@
             const avg10 = pm10List.length
                 ? pm10List.reduce((a, b) => a + b, 0) / pm10List.length
                 : avg25;
-            return { aqi: calcAQI(avg25), pm25: avg25, pm10: avg10, devicesSeen: pm25List.length };
+            return { aqi: calcAQI(Math.min(...pm25List)), pm25: avg25, pm10: avg10, devicesSeen: pm25List.length };
         }
  
         async function fetchOutdoor() {
